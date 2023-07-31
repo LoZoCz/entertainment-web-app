@@ -1,32 +1,80 @@
-@font-face {
-    font-family: "Outfit";
-    src: 
-        url('../assets/fonts/Outfit-Light.ttf'),
-        url('../assets/fonts/Outfit-Medium.ttf');
-}
-
-$prim-clr-1: #10141e;
-$prim-clr-2: #161d2f;
-$prim-clr-3: #5a698f;
-$prim-clr-4: #ffffff;
-$prim-clr-5: #fc4747;
-$prim-clr-6: #6d6d6e;
-
-$font-name: 'Outfit';
+@import "./clrs-fonts.scss";
 
 * {
-    box-sizing: border-box;
-    font-family: inherit;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: $font-name, system-ui,  sans-serif;
-    background-color: $prim-clr-1;
-    color: #ffffff;
-    font-size: 18px;
-    margin: 0;
+  font-family: $font-name, system-ui, sans-serif;
+  background-color: $prim-clr-1;
+  color: #ffffff;
+  font-size: 18px;
+  margin: 0;
+  padding: 2rem;
+  scroll-behavior: smooth;
 }
 
-#root{
-    height: 100vh;
+#root {
+  padding-left: 8rem;
+}
+
+#root:has(.not-found-logo) {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - 4rem);
+  gap: 2rem;
+
+  .not-found-logo {
+    width: 20rem;
+  }
+
+  .not-found-title {
+    font-size: 4rem;
+    margin: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.75rem; /* Szerokość scrollbaru */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ccc; /* Kolor scrollbara */
+  border-radius: 0.5rem; /* Zaokrąglenie narożników scrollbara */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa; /* Kolor scrollbara po najechaniu */
+}
+
+/* Ukrywanie strzałek w scrollbarze */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Stylowanie scrollbarów dla przeglądarki Firefox */
+::-moz-scrollbar {
+  width: 0.75rem; /* Szerokość scrollbaru */
+}
+
+::-moz-scrollbar-thumb {
+  background-color: #ccc; /* Kolor scrollbara */
+  border-radius: 0.25rem; /* Zaokrąglenie narożników scrollbara */
+}
+
+::-moz-scrollbar-thumb:hover {
+  background-color: #aaa; /* Kolor scrollbara po najechaniu */
+}
+
+/* Ukrywanie strzałek w scrollbarze dla przeglądarki Firefox */
+::-moz-scrollbar-button {
+  display: none;
 }
