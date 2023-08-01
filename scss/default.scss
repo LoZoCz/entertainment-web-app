@@ -23,6 +23,12 @@ body {
   padding-left: 8rem;
 }
 
+#root:has(.main-film-cont) {
+    height: calc(100vh - 4rem);
+    display: grid;
+    gap: 1rem;
+}
+
 #root:has(.not-found-logo) {
   padding: 0;
   display: flex;

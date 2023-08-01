@@ -7,10 +7,11 @@ import Data from "../json/data.json";
 import { useState } from "react";
 import { BookmarkedGrid } from "../site/BookmarkedGrid";
 import { NoPage } from "../site/NoPage";
+import { MovieSite } from "../site/MovieSite";
 
 function App() {
-  const [movies, setMovies] = useState(() =>
-    Data.map((film, index) => ({ id: index, ...film })),
+  const [ movies, setMovies ] = useState( () =>
+    Data.map( ( film, index ) => ( { id: index, ...film } ) ),
   );
 
   const changeBookmark = (filmId) => {
@@ -32,7 +33,7 @@ function App() {
           element={<Home movies={movies} changeBookmark={changeBookmark} />}
         />
         <Route
-          path="/movies"
+          path="/films"
           element={
             <FilmsGrid
               title={"Movies"}
@@ -64,6 +65,13 @@ function App() {
             />
           }
         />
+
+        {movies.map( item => {
+          return (
+            <Route key={item.id} path={`/${ item.title.replace( / /g, "-" ).toLowerCase() }`} element={<MovieSite movie={item} changeBookmark={changeBookmark} />} />
+          )
+        })}
+
         <Route path="*" element={<NoPage />} />
       </Routes>
     </Router>

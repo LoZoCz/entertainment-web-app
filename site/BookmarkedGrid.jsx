@@ -4,8 +4,11 @@ import "../scss/grid.scss";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faFilm, faTv } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
-export const BookmarkedGrid = ({ title, filter, movies, changeBookmark }) => {
+export const BookmarkedGrid = ( { title, filter, movies, changeBookmark } ) => {
+  const navigate = useNavigate()
+
   return (
     <>
       <Sidebar />
@@ -40,7 +43,7 @@ export const BookmarkedGrid = ({ title, filter, movies, changeBookmark }) => {
                     />{" "}
                     {item.category} &bull; {item.rating}
                   </p>
-                  <p className="film-title">{item.title}</p>
+                  <p className="film-title" onClick={() => navigate(`/${item.title.replace( / /g, "-" ).toLowerCase()}`)}>{item.title}</p>
                 </div>
               );
             })}

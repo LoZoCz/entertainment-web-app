@@ -46,6 +46,10 @@
         &:hover {
           color: $prim-clr-4;
         }
+
+        &[data-active="true"] {
+          color: $prim-clr-4;
+        }
       }
     }
   }

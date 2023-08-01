@@ -2,8 +2,11 @@ import "../scss/recommended.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faFilm, faTv } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
-export const Recommended = ({ movies, changeBookmark }) => {
+export const Recommended = ( { movies, changeBookmark } ) => {
+  const navigate = useNavigate()
+
   return (
     <div className="recommneded-wrapper">
       <h1 className="trending-title main-title">Recommended for you</h1>
@@ -17,7 +20,7 @@ export const Recommended = ({ movies, changeBookmark }) => {
                   className="bookmark-btn"
                   onClick={(e) => {
                     e.stopPropagation();
-                    changeBookmark(item.id); // Przekazujemy id filmu
+                    changeBookmark(item.id);
                   }}
                   data-marked={item.isBookmarked ? "true" : "false"}
                 >
@@ -31,7 +34,7 @@ export const Recommended = ({ movies, changeBookmark }) => {
                 />{" "}
                 {item.category} &bull; {item.rating}
               </p>
-              <p className="film-title">{item.title}</p>
+              <p className="film-title" onClick={() => navigate(`/${item.title.replace( / /g, "-" ).toLowerCase()}`)}>{item.title}</p>
             </div>
           );
         })}

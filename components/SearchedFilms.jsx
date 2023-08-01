@@ -2,8 +2,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faFilm, faTv } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import "../scss/filter-box.scss";
+import { useNavigate } from "react-router-dom";
 
-export const SearchedFilms = ({ searchedFilms, changeBookmark }) => {
+export const SearchedFilms = ( { searchedFilms, changeBookmark } ) => {
+  const navigate = useNavigate()
   return (
     <div className="filter-divs">
       {searchedFilms.map((item) => {
@@ -29,7 +31,7 @@ export const SearchedFilms = ({ searchedFilms, changeBookmark }) => {
               />{" "}
               {item.category} &bull; {item.rating}
             </p>
-            <p className="film-title">{item.title}</p>
+            <p className="film-title" onClick={() => navigate(item.title.replace( / /g, "-" ).toLowerCase())}>{item.title}</p>
           </div>
         );
       })}

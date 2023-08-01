@@ -2,11 +2,14 @@ import "../scss/trending.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBookmark, faFilm, faTv } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 export const Trending = ({ movies, changeBookmark }) => {
   const trendingLength = movies.filter(
     (item) => item.isTrending === true,
   ).length;
+
+  const navigate = useNavigate();
 
   return (
     <div className="trending-wrapper">
@@ -22,7 +25,7 @@ export const Trending = ({ movies, changeBookmark }) => {
               <div
                 className="film"
                 key={crypto.randomUUID()}
-                onClick={() => console.log("film")}
+                onClick={() => navigate(`/${item.title.replace( / /g, "-" ).toLowerCase()}`)}
               >
                 <img src={item.thumbnail.trending.small} alt="film image" />
                 <p className="film-info">
