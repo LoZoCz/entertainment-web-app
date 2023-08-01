@@ -12,7 +12,7 @@
 
   .home-divs {
     display: grid;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: auto 2fr;
     gap: 2rem;
   }
 }
