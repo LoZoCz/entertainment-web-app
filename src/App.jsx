@@ -10,8 +10,8 @@ import { NoPage } from "../site/NoPage";
 import { MovieSite } from "../site/MovieSite";
 
 function App() {
-  const [ movies, setMovies ] = useState( () =>
-    Data.map( ( film, index ) => ( { id: index, ...film } ) ),
+  const [movies, setMovies] = useState(() =>
+    Data.map((film, index) => ({ id: index, ...film })),
   );
 
   const changeBookmark = (filmId) => {
@@ -66,10 +66,16 @@ function App() {
           }
         />
 
-        {movies.map( item => {
+        {movies.map((item) => {
           return (
-            <Route key={item.id} path={`/${ item.title.replace( / /g, "-" ).toLowerCase() }`} element={<MovieSite movie={item} changeBookmark={changeBookmark} />} />
-          )
+            <Route
+              key={item.id}
+              path={`/${item.title.replace(/ /g, "-").toLowerCase()}`}
+              element={
+                <MovieSite movie={item} changeBookmark={changeBookmark} />
+              }
+            />
+          );
         })}
 
         <Route path="*" element={<NoPage />} />
